@@ -5,6 +5,6 @@ SELECT ANIMAL_ID, NAME,
         'O'
         else
         'X'
-    end as 중성화
+    end as '중성화'
     
-    from ANIMAL_INS  
+    from ANIMAL_INS
