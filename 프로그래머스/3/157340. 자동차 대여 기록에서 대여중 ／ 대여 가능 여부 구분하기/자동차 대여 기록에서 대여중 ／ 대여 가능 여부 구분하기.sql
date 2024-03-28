@@ -1,12 +1,11 @@
+-- 코드를 입력하세요
 SELECT CAR_ID,
-    CASE
-        WHEN 
-            SUM(CASE 
-                    WHEN '2022-10-16' BETWEEN START_DATE AND END_DATE 
-                    THEN 1 ELSE 0 
-                END) = 0
-        THEN '대여 가능' ELSE '대여중'
-    END AS AVAILABILITY
-FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
-GROUP BY CAR_ID
-ORDER BY CAR_ID DESC;
+    case when count(date_format(START_DATE,'%Y-%m-%d') <= '2022-10-16' and date_format(END_DATE,'%Y-%m-%d') >= '2022-10-16') = 0 then
+    '대여가능'
+    else
+    '대여중'
+    end as AVAILABILITY 
+    from CAR_RENTAL_COMPANY_RENTAL_HISTORY 
+    
+    group by car_id
+    order by car_id desc;
