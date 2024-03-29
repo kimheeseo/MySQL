@@ -1,9 +1,7 @@
-SELECT  ao.animal_id, 
-        ao.name
-FROM animal_ins AS ai
-    RIGHT JOIN (
-        SELECT *
-        FROM animal_outs) AS ao
-    ON ao.animal_id = ai.animal_id
-WHERE
-ai.datetime IS NULL
+select A.ANIMAL_ID, A.NAME from ANIMAL_OUTS A
+    left join ANIMAL_INS B
+    on A.ANIMAL_ID = B.ANIMAL_ID
+    
+    where B.ANIMAL_ID is null
+    order by ANIMAL_ID, NAME
+    
