@@ -1,0 +1,11 @@
+ SELECT A.ID, B.FISH_NAME, A.LENGTH FROM FISH_INFO A
+    inner JOIN FISH_NAME_INFO B
+    ON A.FISH_TYPE = B.FISH_TYPE
+        
+    WHERE (FISH_NAME, LENGTH)
+    IN (select B.FISH_NAME as FISH_NAME, max(A.LENGTH) as LENGTH from FISH_INFO A 
+        inner join FISH_NAME_INFO  B
+        ON A.FISH_TYPE = B.FISH_TYPE
+    group by A.FISH_TYPE, B.FISH_NAME)
+    
+    
