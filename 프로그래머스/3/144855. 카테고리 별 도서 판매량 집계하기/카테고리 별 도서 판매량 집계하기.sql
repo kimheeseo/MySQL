@@ -1,7 +1,5 @@
--- 코드를 입력하세요
-SELECT A.CATEGORY, sum(B.SALES) as TOTAL_SALES from BOOK A
-    inner join BOOK_SALES B
-    on A.BOOK_ID = B.BOOK_ID
-    where date_format(B.SALES_DATE,'%Y-%m-%d') like('2022-01-%')
-    group by A.CATEGORY
-    order by A.CATEGORY;
+SELECT a.category, sum(b.sales) as total_sales
+from book a, book_sales b
+where a.book_id=b.book_id and date_format(b.sales_date, '%Y-%m-%d') like '2022-01%'
+group by a.category
+order by a.category
